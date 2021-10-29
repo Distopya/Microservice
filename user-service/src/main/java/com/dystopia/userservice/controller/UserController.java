@@ -1,6 +1,7 @@
 package com.dystopia.userservice.controller;
 
 import com.dystopia.userservice.config.model.Follow;
+import com.dystopia.userservice.config.model.Post;
 import com.dystopia.userservice.core.entity.User;
 import com.dystopia.userservice.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,8 +60,8 @@ public class UserController {
             Optional<User> userUp = userService.getUserById(userId);
             if (userUp.isEmpty())
                 return ResponseEntity.notFound().build();
-            user.setId(userId);
             userService.saveUser(user);
+            user.setId(userId);
             return ResponseEntity.ok(user);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
@@ -86,6 +87,16 @@ public class UserController {
         try {
             Follow followNew = userService.saveFollow(reader, follow);
             return ResponseEntity.status(HttpStatus.CREATED).body(followNew);
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @PostMapping("/savePost/{user}")
+    public ResponseEntity<Post> insertFollow(@PathVariable("user") String user, @RequestBody Post post) {
+        try {
+            Post postNew = userService.savePost(user, post);
+            return ResponseEntity.status(HttpStatus.CREATED).body(postNew);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }

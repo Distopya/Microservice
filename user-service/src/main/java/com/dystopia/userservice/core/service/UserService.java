@@ -1,6 +1,7 @@
 package com.dystopia.userservice.core.service;
 
 import com.dystopia.userservice.config.model.Follow;
+import com.dystopia.userservice.config.model.Post;
 import com.dystopia.userservice.core.entity.User;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface UserService {
 
     Follow saveFollow(String userId, Follow follow);
 
-    //    Follow createFollow(String reader, Follow follow);
+    Post savePost(String userId, Post post);
 }

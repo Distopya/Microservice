@@ -57,8 +57,8 @@ public class FollowController {
             Optional<Follow> followUp = followService.getFollowById(followId);
             if (followUp.isEmpty())
                 return ResponseEntity.notFound().build();
-            follow.setId(followId);
             followService.saveFollow(follow);
+            follow.setId(followId);
             return ResponseEntity.ok(follow);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();

@@ -17,6 +17,4 @@ public interface FollowService {
     Follow saveFollow(Follow follow);
 
     void deleteFollow(String followId);
-
-    //    Follow createFollow(String reader, Follow follow);
 }

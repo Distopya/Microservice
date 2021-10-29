@@ -1,10 +1,7 @@
 package com.dystopia.postservice.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -18,6 +15,7 @@ import java.util.List;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Post {
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -30,7 +28,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Size(min = 5, max = 200)
     @Column(name = "title", nullable = false, length = 200)

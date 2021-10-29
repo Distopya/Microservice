@@ -10,7 +10,7 @@ public interface HashtagService {
 
     Optional<Hashtag> getHashtagById(String hashtagId);
 
-    Optional<Hashtag> getHashtagByName(String name);
+    Optional<Hashtag> getHashtagByHashtagName(String hashtagName);
 
     Hashtag saveHashtag(Hashtag hashtag);
 

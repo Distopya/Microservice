@@ -8,7 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
+@RestController
+@RequestMapping("/hashtags")
 public class HashtagController {
 
     @Autowired
@@ -55,8 +59,8 @@ public class HashtagController {
             Optional<Hashtag> hashtagUp = hashtagService.getHashtagById(hashtagId);
             if (hashtagUp.isEmpty())
                 return ResponseEntity.notFound().build();
-            hashtag.setId(hashtagId);
             hashtagService.saveHashtag(hashtag);
+            hashtag.setId(hashtagId);
             return ResponseEntity.ok(hashtag);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();

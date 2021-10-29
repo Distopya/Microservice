@@ -11,6 +11,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
+@RequestMapping("/posts")
 public class PostController {
     @Autowired
     private PostService postService;
@@ -55,8 +57,8 @@ public class PostController {
             Optional<Post> postUp = postService.getPostById(postId);
             if (postUp.isEmpty())
                 return ResponseEntity.notFound().build();
-            post.setId(postId);
             postService.savePost(post);
+            post.setId(postId);
             return ResponseEntity.ok(post);
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();

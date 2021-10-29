@@ -32,11 +32,13 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    @Transactional
     public Post savePost(Post post) {
         return postRepository.save(post);
     }
 
     @Override
+    @Transactional
     public void deletePost(String postId) {
         postRepository.deleteById(postId);
     }

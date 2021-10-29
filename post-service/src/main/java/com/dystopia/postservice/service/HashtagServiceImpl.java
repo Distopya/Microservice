@@ -2,8 +2,7 @@ package com.dystopia.postservice.service;
 
 import com.dystopia.postservice.core.entity.Hashtag;
 import com.dystopia.postservice.core.repository.HashtagRepository;
-import com.dystopia.postservice.core.repository.PostRepository;
-import com.dystopia.postservice.core.service.PostService;
+import com.dystopia.postservice.core.service.HashtagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
-public class HashtagServiceImpl {
+public class HashtagServiceImpl implements HashtagService {
 
     @Autowired
     private HashtagRepository hashtagRepository;
@@ -29,16 +28,18 @@ public class HashtagServiceImpl {
     }
 
     @Override
-    public Optional<Hashtag> getHashtagByName(String name) {
-        return hashtagRepository.findByName(name);
+    public Optional<Hashtag> getHashtagByHashtagName(String name) {
+        return hashtagRepository.findByHashtagName(name);
     }
 
     @Override
+    @Transactional
     public Hashtag saveHashtag(Hashtag hashtag) {
         return hashtagRepository.save(hashtag);
     }
 
     @Override
+    @Transactional
     public void deleteHashtag(String hashtagId) {
         hashtagRepository.deleteById(hashtagId);
     }

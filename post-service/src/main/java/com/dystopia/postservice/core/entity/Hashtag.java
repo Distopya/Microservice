@@ -1,10 +1,7 @@
 package com.dystopia.postservice.core.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -17,16 +14,16 @@ import java.util.List;
 @Setter
 @ToString
 @RequiredArgsConstructor
-
+@AllArgsConstructor
 public class Hashtag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @NaturalId
     @Size(min = 5, max = 30)
-    @Column(name = "name", nullable = false, length = 30, unique = true)
-    private String name;
+    @Column(name = "hashtag_name", nullable = false, length = 30, unique = true)
+    private String hashtagName;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},

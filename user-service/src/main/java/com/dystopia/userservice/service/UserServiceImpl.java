@@ -1,7 +1,9 @@
 package com.dystopia.userservice.service;
 
 import com.dystopia.userservice.config.client.FollowFeignClient;
+import com.dystopia.userservice.config.client.PostFeignClient;
 import com.dystopia.userservice.config.model.Follow;
+import com.dystopia.userservice.config.model.Post;
 import com.dystopia.userservice.core.entity.User;
 import com.dystopia.userservice.core.repository.UserRepository;
 import com.dystopia.userservice.core.service.UserService;
@@ -21,6 +23,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private FollowFeignClient followFeignClient;
 
+    @Autowired
+    private PostFeignClient postFeignClient;
+
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -37,20 +42,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User saveUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
+    @Transactional
     public void deleteUser(String userId) {
         userRepository.deleteById(userId);
     }
 
     @Override
+    @Transactional
     public Follow saveFollow(String userId, Follow follow) {
         follow.setReader(userId);
-        //        follow.setWriter(writer);
-        Follow followNew = followFeignClient.insertFollow(follow);
-        return followNew;
+        return followFeignClient.insertFollow(follow);
+    }
+
+    @Override
+    @Transactional
+    public Post savePost(String userId, Post post) {
+        post.setUser(userId);
+        return postFeignClient.insertPost(post);
     }
 }

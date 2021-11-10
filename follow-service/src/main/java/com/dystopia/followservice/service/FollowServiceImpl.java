@@ -37,11 +37,13 @@ public class FollowServiceImpl implements FollowService {
     }
 
     @Override
+    @Transactional
     public Follow saveFollow(Follow follow) {
         return followRepository.save(follow);
     }
 
     @Override
+    @Transactional
     public void deleteFollow(String followId) {
         followRepository.deleteById(followId);
     }

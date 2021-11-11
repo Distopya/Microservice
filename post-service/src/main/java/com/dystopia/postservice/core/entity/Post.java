@@ -38,6 +38,7 @@ public class Post {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @NotBlank
     @Lob
     @Type(type = "text")
     @Column(name = "content", nullable = false)

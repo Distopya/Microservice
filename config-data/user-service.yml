@@ -2,13 +2,13 @@
 #                           APPLICATION CONFIGURATION                          #
 # ---------------------------------------------------------------------------- #
 server:
-  port: 8092
+  port: 8091
   error:
     include-message: always
     include-binding-errors: always
 # ---------------------------------------------------------------------------- #
 #                         TO SEE H2 CONSOLE IN BROWSER:                        #
-#                       http://localhost:8092/h2-console                       #
+#                       http://localhost:8091/h2-console                       #
 #                              ENABLING H2 CONSOLE                             #
 # ---------------------------------------------------------------------------- #
 spring:
@@ -20,7 +20,7 @@ spring:
   #                                   DATABASE                                   #
   # ---------------------------------------------------------------------------- #
   datasource:
-    url: jdbc:h2:mem:followDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:userDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     username: Hugo
     password: Rushia
@@ -37,3 +37,24 @@ spring:
         show_sql: true
         use_sql_comments: false
         format_sql: false
+# ---------------------------------------------------------------------------- #
+#                             LOGGING CONFIGURATION                            #
+# ---------------------------------------------------------------------------- #
+Logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+# ---------------------------------------------------------------------------- #
+#                             EUREKA CONFIGURATION                             #
+# ---------------------------------------------------------------------------- #
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka/
+# ---------------------------------------------------------------------------- #
+#                           MANAGEMENT CONFIGURATION                           #
+# ---------------------------------------------------------------------------- #
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

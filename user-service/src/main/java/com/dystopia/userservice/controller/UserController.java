@@ -27,7 +27,6 @@ public class UserController {
                 return ResponseEntity.ok(users);
             else
                 return ResponseEntity.noContent().build();
-
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
@@ -93,7 +92,7 @@ public class UserController {
     }
 
     @PostMapping("/savePost/{user}")
-    public ResponseEntity<Post> insertFollow(@PathVariable("user") String user, @RequestBody Post post) {
+    public ResponseEntity<Post> insertPost(@PathVariable("user") String user, @RequestBody Post post) {
         try {
             Post postNew = userService.savePost(user, post);
             return ResponseEntity.status(HttpStatus.CREATED).body(postNew);
@@ -101,5 +100,4 @@ public class UserController {
             return ResponseEntity.internalServerError().build();
         }
     }
-
 }

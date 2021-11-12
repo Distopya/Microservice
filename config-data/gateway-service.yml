@@ -1,0 +1,39 @@
+# ---------------------------------------------------------------------------- #
+#                             GATEWAY CONFIGURATION                            #
+# ---------------------------------------------------------------------------- #
+server:
+  port: 8080
+# ---------------------------------------------------------------------------- #
+#                             EUREKA CONFIGURATIONS                            #
+# ---------------------------------------------------------------------------- #
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka
+# ---------------------------------------------------------------------------- #
+#                             SPRING CONFIGURATIONS                            #
+#                             ROUTES OF THE GATEWAY                            #
+# ---------------------------------------------------------------------------- #
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path:/users/**
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path:/posts/**
+        - id: follow-service
+          uri: lb://follow-service
+          predicates:
+            - Path:/follows/**
+        - id: feedback-service
+          uri: lb://feedback-service
+          predicates:
+            - Path:/feedbacks/**

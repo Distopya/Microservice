@@ -1,0 +1,14 @@
+# ---------------------------------------------------------------------------- #
+#                           APPLICATION CONFIGURATION                          #
+# ---------------------------------------------------------------------------- #
+server:
+  port: 8099
+# ---------------------------------------------------------------------------- #
+#                             EUREKA CONFIGURATION                             #
+# ---------------------------------------------------------------------------- #
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

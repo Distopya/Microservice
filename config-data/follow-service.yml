@@ -2,7 +2,7 @@
 #                           APPLICATION CONFIGURATION                          #
 # ---------------------------------------------------------------------------- #
 server:
-  port: 8092
+  port:  ${PORT:${SERVER_PORT:0}}
   error:
     include-message: always
     include-binding-errors: always
@@ -48,8 +48,12 @@ Logging:
 # ---------------------------------------------------------------------------- #
 eureka:
   client:
+    fetch-registry: true
+    register-with-eureka: true
     serviceUrl:
-      defaultZone: http://localhost:8099/eureka/
+      defaultZone: http://localhost:8099/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 # ---------------------------------------------------------------------------- #
 #                           MANAGEMENT CONFIGURATION                           #
 # ---------------------------------------------------------------------------- #

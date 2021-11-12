@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: follow-service
+  cloud:
+    config:
+      uri: http://localhost:8081
+      enabled: true
+  #      username: root
+  #      password: s3cr3t
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8086

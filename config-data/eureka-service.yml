@@ -7,8 +7,8 @@ server:
 #                             EUREKA CONFIGURATION                             #
 # ---------------------------------------------------------------------------- #
 eureka:
-  # instance:
-  #   hostname: localhost
+  instance:
+    hostname: localhost
   client:
     fetch-registry: false
     register-with-eureka: false

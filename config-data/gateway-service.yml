@@ -40,4 +40,4 @@ spring:
         - id: feedback-service
           uri: lb://feedback-service
           predicates:
-            - Path=/users/**/posts/**/bookmarks/**, /posts/**/bookmarks/**, /users/**/bookmarks/**, /bookmarks/**
+            - Path= //bookmarks/**

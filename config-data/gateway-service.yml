@@ -40,4 +40,6 @@ spring:
         - id: feedback-service
           uri: lb://feedback-service
           predicates:
-            - Path=/users/{userId}/posts/{postId}/qualifications/**, /posts/{postId}/qualifications/**, /users/{userId}/qualifications/**, /qualifications/**
+            - Path=/feed/posts/**, /feed/users/**
+          filters:
+            -RewritePath=/feed,/

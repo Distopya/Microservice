@@ -8,8 +8,12 @@ server:
 # ---------------------------------------------------------------------------- #
 eureka:
   client:
+    fetch-registry: true
+    register-with-eureka: true
     serviceUrl:
       defaultZone: http://localhost:8099/eureka
+  instance:
+    hostname: localhost
 # ---------------------------------------------------------------------------- #
 #                             SPRING CONFIGURATIONS                            #
 #                             ROUTES OF THE GATEWAY                            #
@@ -25,15 +29,15 @@ spring:
           uri: lb://user-service
           predicates:
             - Path:/users/**
-        - id: post-service
-          uri: lb://post-service
-          predicates:
-            - Path:/posts/**
         - id: follow-service
           uri: lb://follow-service
           predicates:
             - Path:/follows/**
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path:/posts/**, /hashtags/**
         - id: feedback-service
           uri: lb://feedback-service
           predicates:
-            - Path:/feedbacks/**
+            - Path:**/bookmarks/**, **/qualifications/**, **/comments/**

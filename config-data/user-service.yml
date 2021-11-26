@@ -61,6 +61,12 @@ eureka:
 # ---------------------------------------------------------------------------- #
 #                           MANAGEMENT CONFIGURATION                           #
 # ---------------------------------------------------------------------------- #
+boot:
+  admin:
+    client:
+      url: http://localhost:8086
+application:
+  name: user-service
 management:
   endpoints:
     web:

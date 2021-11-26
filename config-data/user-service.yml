@@ -41,9 +41,9 @@ spring:
   #                                 ADMIN SERVER                                 #
   # ---------------------------------------------------------------------------- #
   boot:
-  admin:
-    client:
-      url: http://localhost:8086
+    admin:
+      client:
+        url: http://localhost:8086
   application:
     name: user-service
 # ---------------------------------------------------------------------------- #

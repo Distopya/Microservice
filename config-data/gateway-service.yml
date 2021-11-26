@@ -28,16 +28,16 @@ spring:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path:/users/**
+            - Path=/users/**
         - id: follow-service
           uri: lb://follow-service
           predicates:
-            - Path:/follows/**
+            - Path=/follows/**
         - id: post-service
           uri: lb://post-service
           predicates:
-            - Path:/posts/**, /hashtags/**
+            - Path=/posts/**, /hashtags/**
         - id: feedback-service
           uri: lb://feedback-service
           predicates:
-            - Path:**/bookmarks/**, **/qualifications/**, **/comments/**
+            - Path=**/bookmarks/**, **/qualifications/**, **/comments/**

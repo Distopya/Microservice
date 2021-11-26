@@ -43,6 +43,10 @@ spring:
 Logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file:
+    name: user-service.log
+    max-history: 20
+    max-size: 100MB
 # ---------------------------------------------------------------------------- #
 #                             EUREKA CONFIGURATION                             #
 # ---------------------------------------------------------------------------- #
@@ -62,3 +66,6 @@ management:
     web:
       exposure:
         include: "*"
+  endpoint:
+    health:
+      show-details: always

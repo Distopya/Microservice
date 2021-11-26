@@ -42,4 +42,4 @@ spring:
           predicates:
             - Path=/feed/posts/**, /feed/users/**
           filters:
-            -RewritePath=/feed,/
+            - RewritePath=/feed,/

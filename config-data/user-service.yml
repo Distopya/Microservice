@@ -37,6 +37,15 @@ spring:
         show_sql: true
         use_sql_comments: false
         format_sql: false
+  # ---------------------------------------------------------------------------- #
+  #                                 ADMIN SERVER                                 #
+  # ---------------------------------------------------------------------------- #
+  boot:
+  admin:
+    client:
+      url: http://localhost:8086
+  application:
+    name: user-service
 # ---------------------------------------------------------------------------- #
 #                             LOGGING CONFIGURATION                            #
 # ---------------------------------------------------------------------------- #
@@ -61,12 +70,6 @@ eureka:
 # ---------------------------------------------------------------------------- #
 #                           MANAGEMENT CONFIGURATION                           #
 # ---------------------------------------------------------------------------- #
-boot:
-  admin:
-    client:
-      url: http://localhost:8086
-application:
-  name: user-service
 management:
   endpoints:
     web:

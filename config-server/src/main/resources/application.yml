@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: develop
+          default-label: gateway
           uri: https://github.com/Distopya/Microservice
           search-paths: config-data
   application:

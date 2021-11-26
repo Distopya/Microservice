@@ -1,0 +1,8 @@
+applications:
+  - name: user-service
+    path: build/libs/user-service-1.0.jar
+    memory: 1GB
+    instances: 1
+    buildpacks:
+      - java_buildpack
+    stack: cflinuxfs3

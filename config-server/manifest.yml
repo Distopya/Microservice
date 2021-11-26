@@ -1,0 +1,8 @@
+applications:
+  - name: config-server
+    path: build/libs/config-server-1.0.jar
+    memory: 1GB
+    instances: 1
+    buildpacks:
+      - java_buildpack
+    stack: cflinuxfs3
